@@ -1,0 +1,65 @@
+[project]
+name = "so101-recorder"
+dynamic = ["version"]
+description = "A terminal UI for recording SO-101 datasets with lerobot-record: one sentence, then teleop. Rerun and the Hugging Face Hub included."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+authors = [{ name = "fport" }]
+keywords = ["robotics", "so-101", "so-arm100", "lerobot", "dataset", "teleoperation", "rerun", "tui"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: System :: Hardware",
+]
+dependencies = [
+    # lerobot-record itself runs the recording; the extras are what it needs for an SO-101:
+    # feetech (motors), core-scripts (dataset writer, pynput keys, Rerun viewer)
+    "lerobot[feetech,core-scripts]>=0.6.1,<0.7",
+    "textual>=8.2,<9",  # the terminal UI; its API changes between majors
+]
+
+[project.scripts]
+so101-rec = "so101_recorder.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/fport/so101-recorder"
+Issues = "https://github.com/fport/so101-recorder/issues"
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/so101_recorder/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/so101_recorder"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.6",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
