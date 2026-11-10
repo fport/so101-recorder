@@ -17,6 +17,8 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-ededed?labelColor=1c1c1c" alt="MIT license"></a>
 </p>
 
+**Write-up:** [Three Small Tools Around One Robot Arm](https://getporti.com/paper/so101-toolbelt) — the calibrator, the recorder and the remote as one flow.
+
 ## Start
 
 ```bash

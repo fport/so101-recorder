@@ -17,6 +17,8 @@ Altta <a href="https://github.com/huggingface/lerobot">lerobot-record</a>, yanı
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-ededed?labelColor=1c1c1c" alt="MIT lisansı"></a>
 </p>
 
+**Yazı:** [Bir Robot Kolun Etrafındaki Üç Küçük Araç](https://getporti.com/tr/paper/so101-toolbelt) — calibrator, recorder ve remote tek bir akış olarak.
+
 ## Başla
 
 ```bash
